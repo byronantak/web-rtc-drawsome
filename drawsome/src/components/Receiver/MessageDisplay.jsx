@@ -2,11 +2,28 @@ import React from "react";
 import Message from "./Message";
 
 export class MessageDisplay extends React.Component {
-  constructor({ messages }) {
+  constructor() {
     super();
+    this.storageKey = "KEY";
+    const storageValue = localStorage.getItem(this.storageKey);
     this.state = {
-      messages,
+      messages: JSON.parse(storageValue || "[]"),
     };
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => this.updateMessages(), 200);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  updateMessages() {
+    const storageValue = localStorage.getItem(this.storageKey);
+    this.setState({
+      messages: JSON.parse(storageValue || "[]"),
+    });
   }
 
   render() {
