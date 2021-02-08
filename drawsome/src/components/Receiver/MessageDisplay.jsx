@@ -3,21 +3,17 @@ import Message from "./Message";
 import { connect } from "react-redux";
 
 const mapStateToProps = (state, _) => {
-  console.log(state);
   return {
     messages: state,
   };
 };
 export class MessageDisplay extends React.Component {
-  constructor({ state }) {
-    console.log("messages", state);
+  constructor({ messages }) {
     super();
-    this.state = state;
+    this.state = messages;
   }
 
   render() {
-    console.log(this.state);
-    // console.log(`props`, this.props);
     return (
       <div>
         <div>Messages:</div>

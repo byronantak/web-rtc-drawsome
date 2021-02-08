@@ -1,4 +1,4 @@
-const localStorageKey = "Drawsome";
+import localStorageKey from "./storageKey";
 
 export default function reducer(state = { messages: [] }, action) {
   switch (action.type) {
@@ -11,7 +11,7 @@ export default function reducer(state = { messages: [] }, action) {
     case "messages/loadMessages":
       return {
         ...state,
-        messages: JSON.parse(localStorageKey.getItem(localStorageKey)),
+        messages: JSON.parse(localStorage.getItem(localStorageKey)),
       };
     case "messages/addMessage":
       localStorage.setItem(localStorageKey, JSON.stringify(state.messages));
