@@ -1,37 +1,28 @@
 import React from "react";
 import Message from "./Message";
+import { connect } from "react-redux";
 
+const mapStateToProps = (state, _) => {
+  console.log(state);
+  return {
+    messages: state,
+  };
+};
 export class MessageDisplay extends React.Component {
-  constructor() {
+  constructor({ state }) {
+    console.log("messages", state);
     super();
-    this.storageKey = "KEY";
-    const storageValue = localStorage.getItem(this.storageKey);
-    this.state = {
-      messages: JSON.parse(storageValue || "[]"),
-    };
-  }
-
-  componentDidMount() {
-    this.interval = setInterval(() => this.updateMessages(), 200);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
-
-  updateMessages() {
-    const storageValue = localStorage.getItem(this.storageKey);
-    this.setState({
-      messages: JSON.parse(storageValue || "[]"),
-    });
+    this.state = state;
   }
 
   render() {
+    console.log(this.state);
+    // console.log(`props`, this.props);
     return (
       <div>
         <div>Messages:</div>
         <div className="p-1">
-          {this.state.messages.map((msg, i) => {
+          {(this.state?.messages ?? []).map((msg, i) => {
             return <Message message={msg} key={i}></Message>;
           })}
         </div>
@@ -40,4 +31,4 @@ export class MessageDisplay extends React.Component {
   }
 }
 
-export default MessageDisplay;
+export default connect(mapStateToProps, null)(MessageDisplay);

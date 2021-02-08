@@ -1,36 +1,48 @@
 import React from "react";
+import { connect } from "react-redux";
+import { messages } from "../../redux/messages/actions";
+
+const mapDispatchToProps = {
+  addMessage: messages.addMessage,
+  clearMessages: messages.addMessage,
+};
 
 export class MessageControls extends React.Component {
-  storageKey = "KEY";
+  value = "";
 
   constructor() {
     super();
     this.state = {};
     this.sendMessage = this.sendMessage.bind(this);
     this.clearMessage = this.clearMessage.bind(this);
+    this.updateValue = this.updateValue.bind(this);
   }
 
   sendMessage() {
-    console.log("send");
-    const input = document.getElementById("text");
-    const message = {
-      text: input.value,
-      time: new Date(),
-    };
-    const messages = JSON.parse(localStorage.getItem(this.storageKey)) ?? [];
-    messages.push(message);
-    localStorage.setItem(this.storageKey, JSON.stringify(messages));
+    this.props.store.dispatch(
+      messages.addMessage({
+        text: this.value,
+        time: new Date(),
+      })
+    );
   }
 
   clearMessage() {
-    console.log("clear");
-    localStorage.setItem(this.storageKey, JSON.stringify([]));
+    this.props.store.dispatch(messages.clearMessages());
+  }
+
+  updateValue(value) {
+    this.value = value;
   }
 
   render() {
     return (
       <div>
-        <input id="text" name="text"></input>
+        <input
+          id="text"
+          name="text"
+          onChange={(e) => this.updateValue(e.target.value)}
+        ></input>
         <div className="d-flex justify-content-between mt-1">
           <button
             type="button"
@@ -52,4 +64,4 @@ export class MessageControls extends React.Component {
   }
 }
 
-export default MessageControls;
+export default connect(null, mapDispatchToProps)(MessageControls);
