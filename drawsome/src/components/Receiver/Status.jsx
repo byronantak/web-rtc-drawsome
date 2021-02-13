@@ -1,23 +1,23 @@
-import React from "react";
+import React from 'react'
 
 export class Status extends React.Component {
-  constructor({ status }) {
-    super();
+  constructor ({ status }) {
+    super()
     this.state = {
-      status,
-    };
-  }
-
-  getClass(status) {
-    switch (status.toLocaleLowerCase()) {
-      case "test":
-        return "test-status";
-      default:
-        return "";
+      status
     }
   }
 
-  render() {
+  getClass (status) {
+    switch (status.toLocaleLowerCase()) {
+      case 'test':
+        return 'test-status'
+      default:
+        return ''
+    }
+  }
+
+  render () {
     return (
       <div>
         Status: &nbsp;
@@ -25,8 +25,8 @@ export class Status extends React.Component {
           {this.state.status}
         </span>
       </div>
-    );
+    )
   }
 }
 
-export default Status;
+export default Status

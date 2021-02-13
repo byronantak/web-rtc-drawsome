@@ -1,20 +1,20 @@
 const addMessage = (message) => ({
-  type: "messages/addMessage",
+  type: 'messages/addMessage',
   payload: {
-    message,
-  },
-});
+    message
+  }
+})
 
 const loadMessages = () => ({
-  type: "messages/loadMessages",
-});
+  type: 'messages/loadMessages'
+})
 
 const clearMessages = () => ({
-  type: "messages/clearMessages",
-});
+  type: 'messages/clearMessages'
+})
 
 export const messages = {
   addMessage,
   loadMessages,
-  clearMessages,
-};
+  clearMessages
+}
