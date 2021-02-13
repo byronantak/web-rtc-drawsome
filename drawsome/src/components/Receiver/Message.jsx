@@ -10,20 +10,23 @@ export class Message extends React.Component {
 
   getTimeString(dateString) {
     const date = new Date(dateString);
-    return new Intl.DateTimeFormat("default", {
-      hour: "numeric",
-      minute: "numeric",
-      hour12: false,
-    }).format(date.getTime());
+    if (date instanceof Date && !isNaN(date)) {
+      return new Intl.DateTimeFormat("default", {
+        hour: "numeric",
+        minute: "numeric",
+        hour12: false,
+      }).format(date.getTime());
+    }
+    return "";
   }
 
   render() {
     return (
       <div>
         <span className={"message-time"}>
-          {this.getTimeString(this.state.message.time)}:{" "}
+          {this.getTimeString(this.state?.message?.time)}:{" "}
         </span>
-        <span className={"message-text"}>{this.state.message.text}</span>
+        <span className={"message-text"}>{this.state?.message?.text}</span>
       </div>
     );
   }

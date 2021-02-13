@@ -22,7 +22,6 @@ export class Grid extends React.Component {
 
   toggleTile(key) {
     return function () {
-      console.log("toggle", key);
       this.setState({ ...this.state, [key]: !this.state[key] });
     }.bind(this);
   }

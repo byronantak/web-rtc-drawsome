@@ -3,32 +3,38 @@ import React from "react";
 import MessageDisplay from "./MessageDisplay";
 import MessageControls from "./MessageControls";
 import { Grid } from "./Grid";
-import { messages } from "../../redux/messages/actions";
+import { messages as messageActions } from "../../redux/messages/actions";
 import { connect } from "react-redux";
 
 const mapDispatchToProps = {
-  loadMessages: messages.loadMessages,
+  loadMessages: messageActions.loadMessages,
+};
+
+const mapStateToProps = (state, _) => {
+  return {
+    messages: [...state?.messages],
+  };
 };
 
 export class Receiver extends React.Component {
-  constructor({ store }) {
+  constructor({ messages, loadMessages }) {
     super();
     this.state = {
-      store,
+      messages,
     };
-    this.state.store.dispatch(messages.loadMessages());
+    loadMessages();
   }
 
   render() {
     return (
       <div>
         {/* <Status status={this.state.status}></Status> */}
-        <MessageDisplay store={this.state.store}></MessageDisplay>
-        <MessageControls store={this.state.store}></MessageControls>
+        <MessageDisplay messages={this.props.messages}></MessageDisplay>
+        <MessageControls></MessageControls>
         <Grid></Grid>
       </div>
     );
   }
 }
 
-export default connect(null, mapDispatchToProps)(Receiver);
+export default connect(mapStateToProps, mapDispatchToProps)(Receiver);

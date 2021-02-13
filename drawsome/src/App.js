@@ -12,7 +12,7 @@ class App extends React.Component {
       <div className="App p-2">
         <Provider store={store}>
           <h4>Hello World</h4>
-          <Receiver store={store}></Receiver>
+          <Receiver></Receiver>
         </Provider>
       </div>
     );
