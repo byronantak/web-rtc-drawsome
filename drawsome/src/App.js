@@ -1,10 +1,10 @@
-import './App.css'
+import './App.css';
 
-import React from 'react'
-import Receiver from './components/Receiver/Receiver'
+import React from 'react';
+import Receiver from './components/Receiver/Receiver';
 
-import { Provider } from 'react-redux'
-import store from './redux/store'
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 class App extends React.Component {
   render () {
@@ -15,8 +15,8 @@ class App extends React.Component {
           <Receiver />
         </Provider>
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default App;

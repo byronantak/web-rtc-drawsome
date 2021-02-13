@@ -1,24 +1,24 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 export class Message extends React.Component {
   constructor ({ message }) {
-    super()
+    super();
     this.state = {
       message
-    }
+    };
   }
 
   getTimeString (dateString) {
-    const date = new Date(dateString)
+    const date = new Date(dateString);
     if (date instanceof Date && !isNaN(date)) {
       return new Intl.DateTimeFormat('default', {
         hour: 'numeric',
         minute: 'numeric',
         hour12: false
-      }).format(date.getTime())
+      }).format(date.getTime());
     }
-    return ''
+    return '';
   }
 
   render () {
@@ -29,12 +29,12 @@ export class Message extends React.Component {
         </span>
         <span className='message-text'>{this.state?.message?.text}</span>
       </div>
-    )
+    );
   }
 }
 
 Message.propTypes = {
   message: PropTypes.object
-}
+};
 
-export default Message
+export default Message;

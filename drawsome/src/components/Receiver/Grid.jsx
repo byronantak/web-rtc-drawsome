@@ -1,29 +1,29 @@
-import React from 'react'
+import React from 'react';
 
 export class Grid extends React.Component {
   constructor () {
-    super()
+    super();
     this.state = {
       standby: false,
       go: false,
       fade: false,
       allOff: false
-    }
-    this.getClass = this.getClass.bind(this)
-    this.toggleTile = this.toggleTile.bind(this)
+    };
+    this.getClass = this.getClass.bind(this);
+    this.toggleTile = this.toggleTile.bind(this);
   }
 
   getClass (key) {
     if (this.state[key]) {
-      return 'tile active'
+      return 'tile active';
     }
-    return 'tile'
+    return 'tile';
   }
 
   toggleTile (key) {
     return function () {
-      this.setState({ ...this.state, [key]: !this.state[key] })
-    }.bind(this)
+      this.setState({ ...this.state, [key]: !this.state[key] });
+    }.bind(this);
   }
 
   render () {
@@ -55,6 +55,6 @@ export class Grid extends React.Component {
           </span>
         </div>
       </div>
-    )
+    );
   }
 }

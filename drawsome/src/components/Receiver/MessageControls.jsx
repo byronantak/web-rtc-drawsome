@@ -1,46 +1,46 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { messages } from '../../redux/messages/actions'
-import PropTypes from 'prop-types'
+import React from 'react';
+import { connect } from 'react-redux';
+import { messages } from '../../redux/messages/actions';
+import PropTypes from 'prop-types';
 
 const mapDispatchToProps = {
   addMessage: messages.addMessage,
   clearMessages: messages.clearMessages
-}
+};
 
 export class MessageControls extends React.Component {
   constructor ({ addMessage, clearMessages }) {
-    super()
+    super();
     this.state = {
       value: '',
       addMessage,
       clearMessages
-    }
-    this.handleSendMessage = this.handleSendMessage.bind(this)
-    this.handleClearMessage = this.handleClearMessage.bind(this)
-    this.updateValue = this.updateValue.bind(this)
+    };
+    this.handleSendMessage = this.handleSendMessage.bind(this);
+    this.handleClearMessage = this.handleClearMessage.bind(this);
+    this.updateValue = this.updateValue.bind(this);
   }
 
   handleSendMessage () {
     this.state.addMessage({
       text: this.state.value,
       time: new Date()
-    })
+    });
     this.setState({
       ...this.state,
       value: ''
-    })
+    });
   }
 
   handleClearMessage () {
-    this.state.clearMessages()
+    this.state.clearMessages();
   }
 
   updateValue (value) {
     this.setState({
       ...this.state,
       value
-    })
+    });
   }
 
   render () {
@@ -70,13 +70,13 @@ export class MessageControls extends React.Component {
           </button>
         </div>
       </div>
-    )
+    );
   }
 }
 
 MessageControls.propTypes = {
   addMessage: PropTypes.func,
   clearMessages: PropTypes.func
-}
+};
 
-export default connect(null, mapDispatchToProps)(MessageControls)
+export default connect(null, mapDispatchToProps)(MessageControls);

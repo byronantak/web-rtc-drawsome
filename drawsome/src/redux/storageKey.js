@@ -1,3 +1,3 @@
-export const localStorageKey = 'Drawsome'
+export const localStorageKey = 'Drawsome';
 
-export default localStorageKey
+export default localStorageKey;

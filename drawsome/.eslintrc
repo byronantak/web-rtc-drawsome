@@ -5,6 +5,9 @@
         "standard-jsx",
         "standard-react"
     ],
+    "rules": {
+        "semi": ["error", "always"]
+    },
     "globals": {
         "localStorage": true
     }
