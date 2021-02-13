@@ -8,9 +8,9 @@ const mapStateToProps = (state, _) => {
   };
 };
 export class MessageDisplay extends React.Component {
-  constructor({ messages }) {
+  constructor({ messages: messageObj }) {
     super();
-    this.state = messages;
+    this.state = { messageObj: { ...messageObj } };
   }
 
   render() {
@@ -18,7 +18,7 @@ export class MessageDisplay extends React.Component {
       <div>
         <div>Messages:</div>
         <div className="p-1">
-          {(this.state?.messages ?? []).map((msg, i) => {
+          {(this.state?.messageObj?.messages ?? []).map((msg, i) => {
             return <Message message={msg} key={i}></Message>;
           })}
         </div>

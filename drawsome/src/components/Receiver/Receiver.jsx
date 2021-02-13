@@ -11,19 +11,20 @@ const mapDispatchToProps = {
 };
 
 export class Receiver extends React.Component {
-  constructor() {
+  constructor({ store }) {
     super();
-    // console.log("this.props", this.props);
-    // console.log("this.state", this.state);
-    // this.props.store.dispatch(messages.loadMessages());
+    this.state = {
+      store,
+    };
+    this.state.store.dispatch(messages.loadMessages());
   }
 
   render() {
     return (
       <div>
         {/* <Status status={this.state.status}></Status> */}
-        <MessageDisplay store={this.props.store}></MessageDisplay>
-        <MessageControls store={this.props.store}></MessageControls>
+        <MessageDisplay store={this.state.store}></MessageDisplay>
+        <MessageControls store={this.state.store}></MessageControls>
         <Grid></Grid>
       </div>
     );
