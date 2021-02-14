@@ -1,0 +1,7 @@
+{
+    "compilerOptions": {
+      "baseUrl": "./drawsome/src",
+      "checkJs": true,
+      "jsx": "react"
+    }
+  }

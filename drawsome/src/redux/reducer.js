@@ -1,27 +1,25 @@
+import { combineReducers } from 'redux';
 import localStorageKey from './storageKey';
+import connectionStatusReducer from './connectionStatuses/reducer';
 
-export default function reducer (state, action) {
+export const rootReducer = combineReducers({
+  messages: messageReducer,
+  connectionStatus: connectionStatusReducer
+});
+
+export default function messageReducer (state = [], action) {
   switch (action.type) {
     case 'messages/clearMessages':
       localStorage.setItem(localStorageKey, JSON.stringify([]));
-      return {
-        ...state,
-        messages: []
-      };
+      return [];
     case 'messages/loadMessages':
-      return {
-        ...state,
-        messages: JSON.parse(localStorage.getItem(localStorageKey))
-      };
+      return JSON.parse(localStorage.getItem(localStorageKey));
     case 'messages/addMessage':
       localStorage.setItem(
         localStorageKey,
-        JSON.stringify(state.messages.concat(action.payload.message))
+        JSON.stringify(state.concat(action.payload.message))
       );
-      return {
-        ...state,
-        messages: state.messages.concat(action.payload.message)
-      };
+      return state.concat(action.payload.message);
     default:
       return state;
   }

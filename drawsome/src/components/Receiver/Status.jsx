@@ -1,19 +1,20 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 export class Status extends React.Component {
   constructor ({ status }) {
-    super()
+    super();
     this.state = {
       status
-    }
+    };
   }
 
   getClass (status) {
-    switch (status.toLocaleLowerCase()) {
+    switch (status?.toLocaleLowerCase() ?? '') {
       case 'test':
-        return 'test-status'
+        return 'test-status';
       default:
-        return ''
+        return '';
     }
   }
 
@@ -25,8 +26,12 @@ export class Status extends React.Component {
           {this.state.status}
         </span>
       </div>
-    )
+    );
   }
 }
 
-export default Status
+Status.propTypes = {
+  status: PropTypes.string
+};
+
+export default Status;
