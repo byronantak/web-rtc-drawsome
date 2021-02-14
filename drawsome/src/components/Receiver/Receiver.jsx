@@ -1,6 +1,6 @@
 import React from 'react';
 import Status from './Status';
-import MessageDisplay from './MessageDisplay';
+import MessageDisplay from '../Shared/MessageDisplay';
 import MessageControls from './MessageControls';
 import { Grid } from './Grid';
 import { messages as messageActions } from '../../redux/messages/actions';
