@@ -11,7 +11,7 @@ export class Message extends React.Component {
 
   getTimeString (dateString) {
     const date = new Date(dateString);
-    if (date instanceof Date && !isNaN(date)) {
+    if (date instanceof Date && !isNaN(date.getTime())) {
       return new Intl.DateTimeFormat('default', {
         hour: 'numeric',
         minute: 'numeric',

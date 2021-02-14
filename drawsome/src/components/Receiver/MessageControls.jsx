@@ -1,7 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { messages } from '../../redux/messages/actions';
-import PropTypes from 'prop-types';
 
 const mapDispatchToProps = {
   addMessage: messages.addMessage,
