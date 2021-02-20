@@ -1,7 +1,6 @@
 import React from 'react';
 import Status from './Status';
 import MessageDisplay from '../Shared/MessageDisplay';
-import MessageControls from './MessageControls';
 import { Grid } from './Grid';
 import { messages as messageActions } from '../../redux/messages/actions';
 import { connect } from 'react-redux';
@@ -33,7 +32,6 @@ export class Receiver extends React.Component {
       <div>
         <Status status={this.props.connectionStatus} />
         <MessageDisplay messages={this.props.messages} />
-        <MessageControls />
         <Grid />
       </div>
     );

@@ -1,7 +1,17 @@
+import { connectionActionStrings } from './action.constants';
 
-const openConnection = () => (
+const openConnection = (id) => (
   {
-    type: 'connection/open'
+    type: connectionActionStrings.openConnection,
+    payload: {
+      id
+    }
+  }
+);
+
+const hostConnection = () => (
+  {
+    type: connectionActionStrings.hostConnection
   }
 );
 
@@ -21,6 +31,7 @@ const sendFlag = (flag) => ({
 
 export const connectionActions = {
   openConnection,
+  hostConnection,
   sendFlag,
   sendMessage
 };
