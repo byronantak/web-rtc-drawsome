@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { ConnectionManager } from './ConnectionManager';
 import { MessageDisplay } from './../Shared/MessageDisplay';
 import MessageSendControls from './MessageSendControls';
+import ConnectionManager from './ConnectionManager';
 
 const mapStateToProps = (state, _) => {
   return {

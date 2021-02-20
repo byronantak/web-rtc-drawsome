@@ -1,17 +1,16 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { messages } from '../../redux/messages/actions';
 import { connectionActions } from '../../redux/connection/actions';
+import { messages } from '../../redux/messages/actions';
 
 const mapDispatchToProps = {
-  sendMessage: connectionActions.sendMessage,
+  openConnection: connectionActions.openConnection,
   clearMessages: messages.clearMessages
 };
 
 export class ConnectionManager extends React.Component {
-  constructor (a) {
-    const { openConnection, clearMessages } = a;
+  constructor ({ openConnection, clearMessages }) {
     super();
     this.state = {
       connectionId: '',
@@ -46,8 +45,7 @@ export class ConnectionManager extends React.Component {
 }
 
 ConnectionManager.propTypes = {
-//   openConnection: PropTypes.func,
-//   a: PropTypes.func
+  openConnection: PropTypes.func, clearMessages: PropTypes.func
 };
 
 export default connect(null, mapDispatchToProps)(ConnectionManager);
